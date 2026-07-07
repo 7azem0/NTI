@@ -1,0 +1,4 @@
+Desgin a page for an article, it should include a main topic and a sub-topic, a text and a photo
+Under this, create a form that accepts a name , email, and a message.
+The topics and text should all have different colors and be allinged to the center of the page.
+The submit button of the form should have an effect to change it's background color when the curser hovers over it
