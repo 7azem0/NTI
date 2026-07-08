@@ -1,0 +1,5 @@
+Desgin a landi page
+The header of th epage should contain a picture on the left side, hyperlinks in the middle, and a button on the right side.
+The page content should be: 3 columns beside each other, every column should have a picture, underneath it a heading and uderneath it a discreption.
+The footer with a form that accepts an email.
+Note: the 3 columns should be 2 columns when viewd via a mobile.

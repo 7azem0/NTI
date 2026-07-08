@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Landing Page</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #333;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .header__brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .header__brand img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .header__nav {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .header__nav a {
+      color: #333;
+      text-decoration: none;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+    .header__button a {
+      padding: 10px 18px;
+      background: #0077cc;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .main {
+      flex: 1;
+      max-width: 1120px;
+      margin: 32px auto;
+      padding: 0 24px;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+      text-align: center;
+    }
+    .card img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+    .card h3 {
+      margin: 16px 0 10px;
+      font-size: 1.1rem;
+      color: #1d264a;
+    }
+    .card p {
+      margin: 0;
+      color: #555;
+      line-height: 1.55;
+      font-size: 0.95rem;
+    }
+    .footer {
+      background: #ffffff;
+      margin-top: 32px;
+      padding: 24px;
+      border-top: 1px solid #e5e9f2;
+    }
+    .footer__form {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+    .footer__form input {
+      flex: 1 1 240px;
+      padding: 12px 14px;
+      border: 1px solid #ccd6e1;
+      border-radius: 8px;
+      min-width: 220px;
+      font-size: 1rem;
+    }
+    .footer__form button {
+      padding: 12px 22px;
+      border: none;
+      background: #0077cc;
+      color: #fff;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 180ms ease;
+    }
+    .footer__form button:hover {
+      background: #005fa3;
+    }
+    @media (max-width: 820px) {
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 620px) {
+      .header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+      }
+      .header__nav {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .footer__form {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header__brand">
+      <img src="Header.jpg" alt="Header image" />
+      <span>Landing Page</span>
+    </div>
+    <nav>
+      <ul class="header__nav">
+        <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+        <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+        <li><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        <li><a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+      </ul>
+    </nav>
+    <div class="header__button">
+      <a href="#">Get Started</a>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="cards">
+      <article class="card">
+        <img src="Pic 1.jpg" alt="Character in the first picture" />
+        <h3>Focused Character</h3>
+        <p>The first photo shows a determined character studying a plan, with a focused expression and confident posture. This description highlights how the character prepares for the next step and brings the landing page to life.</p>
+      </article>
+      <article class="card">
+        <img src="Pic 2.jpg" alt="Character in the second picture" />
+        <h3>Thoughtful Character</h3>
+        <p>The second image features a thoughtful character looking ahead, suggesting care and creativity in every decision. This longer description draws attention to the character's style and calm presence.</p>
+      </article>
+      <article class="card">
+        <img src="Pic 3.jpg" alt="Character in the third picture" />
+        <h3>Confident Character</h3>
+        <p>The third photo presents a confident character taking action, showing energy and readiness. It emphasizes how this character brings strength to the page and supports the overall message.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <form class="footer__form" action="#" method="post" onsubmit="alert('Email submitted'); return false;">
+      <input type="email" name="email" placeholder="Enter your email" required />
+      <button type="submit">Subscribe</button>
+    </form>
+  </footer>
+</body>
+</html>
