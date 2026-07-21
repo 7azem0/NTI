@@ -1,29 +1,40 @@
+version: "3.9"
+
 services:
   php-apache:
     build: .
-    container_name: php_server
+    container_name: laravel_app
+
     ports:
       - "8081:80"
+
     volumes:
-      - ./src:/var/www/html
+      - ./:/var/www/html
+
     depends_on:
       - db
+
     environment:
-      - MYSQL_HOST=db
-      - MYSQL_USER=Rain
-      - MYSQL_PASSWORD=Sunny
-      - MYSQL_DB=News
+      MYSQL_HOST: db
+      MYSQL_DATABASE: news
+      MYSQL_USER: Rain
+      MYSQL_PASSWORD: Sunny
+
   db:
     image: mysql:8.0
     container_name: mysql_db
-    restart: always
+
+    restart: unless-stopped
+
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: News
+      MYSQL_DATABASE: news
       MYSQL_USER: Rain
       MYSQL_PASSWORD: Sunny
+
     ports:
       - "3307:3306"
+
     volumes:
       - db_data:/var/lib/mysql
 
