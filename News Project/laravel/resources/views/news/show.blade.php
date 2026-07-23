@@ -1,58 +1,57 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ $article->title }} | NewsHub</title>
-</head>
-<body>
+@extends('layouts.app')
 
-<a href="{{ route('home') }}">← Back to Home</a>
+@section('title', $article->title . ' - NewsHub')
 
-<h1>{{ $article->title }}</h1>
+@section('content')
 
-@if($article->featured)
-    <p><strong>⭐ Featured Article</strong></p>
-@endif
+<article class="ny-article-reading">
+    
+    <div class="mb-3 text-center">
+        <span class="ny-category-tag" style="display:inline-block;">{{ $article->category }}</span>
+        @if($article->featured)
+            <span class="ny-category-tag" style="display:inline-block; margin-left:10px; color: #b12b2b;">Featured</span>
+        @endif
+    </div>
 
-<p>
-    <strong>Category:</strong>
-    {{ $article->category }}
-</p>
+    <h1>{{ $article->title }}</h1>
 
-<p>
-    <strong>Author:</strong>
-    {{ $article->author->name }}
-</p>
+    <div class="summary text-center" style="font-size: 1.25rem; color: var(--color-text-muted); margin-bottom: 2rem; font-family: var(--font-serif-body);">
+        {{ $article->summary }}
+    </div>
 
-@if($article->published_at)
-    <p>
-        <strong>Published:</strong>
-        {{ $article->published_at->format('M d, Y') }}
-    </p>
-@endif
+    <div class="ny-article-author-date">
+        <div class="author">
+            By {{ $article->author->name ?? 'NewsHub Staff' }}
+        </div>
+        <div class="date">
+            @if($article->published_at)
+                Published {{ $article->published_at->format('M. d, Y') }}
+            @else
+                Draft
+            @endif
+        </div>
+    </div>
 
-<hr>
+    <div class="ny-article-content">
+        @php
+            $content = e($article->content);
+            $paragraphs = explode("\n", $content);
+        @endphp
+        @foreach($paragraphs as $p)
+            @if(trim($p) !== '')
+                <p>{!! trim($p) !!}</p>
+            @endif
+        @endforeach
+    </div>
 
-<h2>Summary</h2>
+    @if($article->tags && is_array($article->tags) && count($article->tags) > 0)
+    <div class="ny-tags">
+        @foreach($article->tags as $tag)
+            <span class="ny-tag">{{ $tag }}</span>
+        @endforeach
+    </div>
+    @endif
 
-<p>{{ $article->summary }}</p>
+</article>
 
-<hr>
-
-<h2>Article</h2>
-
-<p>{!! nl2br(e($article->content)) !!}</p>
-
-@if($article->tags)
-
-<hr>
-
-<h3>Tags</h3>
-
-@foreach($article->tags as $tag)
-    <span>#{{ $tag }}</span>
-@endforeach
-
-@endif
-
-</body>
-</html>
+@endsection
